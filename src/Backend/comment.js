@@ -7,8 +7,6 @@
 const express = require('express')
 const router = express.Router()
 
-// bezugsperson auf englisch = reference
-
 const comments = [
     {
         id: 1,
