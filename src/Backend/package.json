@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend to handle Comments and Documents",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoctorProgrammer/Portfolio.git"
+  },
+  "author": "Robin Trachsel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DoctorProgrammer/Portfolio/issues"
+  },
+  "homepage": "https://github.com/DoctorProgrammer/Portfolio#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
