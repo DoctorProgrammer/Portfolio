@@ -84,3 +84,7 @@ function createId() {
     const lastComment = comments[comments.length - 1]
     return lastComment.id + 1
 }
+
+module.exports = [
+    router
+]
