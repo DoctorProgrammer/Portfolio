@@ -37,6 +37,5 @@ app.listen(port, host, () => {
 
 function log(req, res, next) {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`)
-    console.log("Origin: ", req.headers.origin)
     next()
 }
