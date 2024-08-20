@@ -13,6 +13,7 @@ const comment = require('./comment.js')
 const document = require('./document.js')
 
 const app = express()
+const host = '127.0.0.1'
 const port = 3000
 
 app.use(express.urlencoded({ extended: true }))
@@ -27,7 +28,7 @@ app.get('*', (req, res) => {
     res.status(404).send({ error: 'Endpoint not found' })
 })
 
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
 

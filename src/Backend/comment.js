@@ -12,7 +12,7 @@ const comments = [
         id: 1,
         reference: "Vorgesetzter",
         author: 'Robin Trachsel',
-        title: 'Title 1',
+        initials: "RT",
         content: 'Content 1'
     }
 ]
@@ -24,17 +24,18 @@ router.get('', (req, res) => {
 router.post('', (req, res) => {
     const comment = req.body
     const id = createId()
-    const reference = comment.reference
-    const author = comment.author
-    const title = comment.title
-    const content = comment.content
+    const prename = comment.prename
+    const name = comment.name
+    const author = prename + ' ' + name
+    const initials = prename.charAt(0) + name.charAt(0)
+
 
     const newComment = {
         id: id,
-        reference: reference,
+        reference: comment.reference,
         author: author,
-        title: title,
-        content: content
+        initials: initials,
+        content: comment.content
     }
 
     comments.push(newComment)
@@ -69,10 +70,10 @@ router.put('/:id', (req, res) => {
     const comment = comments.find(comment => comment.id === id)
 
     if (comment) {
+        comment.content = req.body.content
         comment.reference = req.body.reference
         comment.author = req.body.author
-        comment.title = req.body.title
-        comment.content = req.body.content
+        comment.initials = req.body.initials
 
         res.json(comment)
     } else {
