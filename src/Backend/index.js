@@ -9,6 +9,7 @@
 */
 
 const express = require('express')
+const cors = require('cors');
 const comment = require('./comment.js')
 const document = require('./document.js')
 
@@ -19,7 +20,9 @@ const port = 3000
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(log)
-app.use(checkOrigin)
+app.use(cors({
+    origin: ['http://localhost:5500/', 'https://robintrachsel.ch', 'http://127.0.0.1:5500']
+}))
 
 app.use('/comment', comment)
 app.use('/document', document)
@@ -34,16 +37,6 @@ app.listen(port, host, () => {
 
 function log(req, res, next) {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`)
+    console.log("Origin: ", req.headers.origin)
     next()
-}
-
-function checkOrigin(req, res, next) {
-    const allowedOrigins = ['robintrachsel.ch', 'localhost:3000']
-    const origin = req.get('origin') || req.get('referer') || req.get('host');
-
-    if (allowedOrigins.includes(origin)) {
-        next();
-    } else {
-        res.status(403).json({ error: 'Origin not allowed' });
-    }
 }
