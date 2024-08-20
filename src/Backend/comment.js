@@ -39,7 +39,7 @@ router.post('', (req, res) => {
     }
 
     comments.push(newComment)
-    res.json(newComment)
+    res.json(comments)
 })
 
 router.get('/:id', (req, res) => {
