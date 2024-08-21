@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(log)
 app.use(cors({
-    origin: ['http://localhost:5500/', 'https://robintrachsel.ch', 'http://127.0.0.1:5500']
+    origin: ['http://localhost:5500/', 'https://www.robintrachsel.ch', 'http://127.0.0.1:5500']
 }))
 
 app.use('/comment', comment)
@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, host, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://${host}:${port}`)
 })
 
 function log(req, res, next) {

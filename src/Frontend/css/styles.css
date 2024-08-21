@@ -50,7 +50,7 @@ h3 {
     font-size: 1.3rem;
     font-weight: 400;
     color: var(--default-font-color);
-    letter-spacing: 0.15rem;
+    letter-spacing: 0.1rem;
     margin-left: 3%;
     width: 80%;
 }
@@ -145,11 +145,12 @@ main section {
     padding: 3% 10%;
 }
 
-main section:nth-child(odd) {
+main section:first-child,
+main section:last-child {
     background-color: var(--default-bg-color);
 }
 
-main section:nth-child(even) {
+main section {
     background-color: var(--secondary-bg-color);
 }
 
