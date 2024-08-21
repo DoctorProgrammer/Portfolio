@@ -20,13 +20,10 @@
     <header>
         <nav id="navbar">
             <ul id="links">
-                <li><a href="./index.html">Startseite</a></li>
-                <li><a href="./about.html">Über mich</a></li>
-                <li><a href="./projects.html">Dokumente</a></li>
-                <li><a href="./contact.html">Kontakt</a></li>
-            </ul>
-            <ul>
-                <img src="./images/LogoTransparent.png" alt="Logo">
+                <li><a href="./">Home</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./projects">Documents</a></li>
+                <li><a href="./contact">Contact</a></li>
             </ul>
             <ul>
                 <button id="mode" onclick="toggleMode()">
@@ -63,37 +60,37 @@
         <section id="comments">
             <form id="commentForm" action="">
                 <div>
-                    <input type="text" name="prename" id="prename" placeholder="Vorname" required>
-                    <input type="text" name="name" id="name" placeholder="Nachname" required>
+                    <input type="text" name="prename" id="prename" placeholder="Prename" required>
+                    <input type="text" name="name" id="name" placeholder="Name" required>
                 </div>
-                <input type="text" name="reference" id="reference" placeholder="Bezug zu Robin (Lehrer, Kollege, etc.)" required>
-                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Kommentar" required></textarea>
+                <input type="text" name="reference" id="reference" placeholder="Reference to Robin (Teacher, friend, etc.)" required>
+                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Comment..." required></textarea>
                 <button type="submit">Post</button>
             </form>
             <div id="commentContainer"></div>
-            <!--
-            <div class="comment">
-                <div class="initials">RT</div>
-                <div>
-                    <p class="name">Robin Trachsel</p>
-                    <h3 class="reference">Lehrer</h3>
-                    <p class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur distinctio
-                        molestias at sed ab
-                        suscipit eos veritatis nihil, voluptatem sapiente adipisci quisquam possimus minus doloremque
-                        tempora modi harum in debitis vero, repellendus optio quam delectus aperiam. Ab, nulla quas. Et
-                        aperiam facilis officia saepe velit eos laborum reprehenderit nulla ipsum deserunt sed natus,
-                        recusandae dolor magnam, asperiores ea doloribus dolore facere pariatur illum consequuntur
-                        iusto. Quo repellendus laboriosam enim sed reprehenderit id eaque amet consequuntur illo
-                        mollitia ab aut similique, et, maiores dolorum? Hic, quidem non laboriosam dolores nulla
-                        corrupti </p>
-                </div>
-            </div>
-            -->
         </section>
     </main>
 
     <footer>
+        <div>
+            <h3>Contact</h3>
+            <p>Robin Trachsel</p>
+            <p>E-Mail: <a href="mailto:ro.trachsel@vtxfree.ch">ro.trachsel@vtxfree.ch</a></p>
+            <p>Phone: <a href="tel:+41784066152">+41 78 406 61 52</a></p>
+            <h3>Address</h3>
+            <p>Im Zil 53 <br>8620 Wetzikon ZH <br>Switzerland</p>
+        </div>
 
+        <div>
+            <h3>Links</h3>
+            <p><a href="https://github.com/TrachselRobin">GitHub</a></p>
+        </div>
+
+        <div>
+            <h3>Dokumente</h3>
+            <p><a href="./documents/TrachselRobin_CV.pdf" target="_blank">TrachselRobin_CV.pdf</a></p>
+            <p><a href="./documents/TrachselRobin_Diplom_1418Coach.pdf" target="_blank">TrachselRobin_Diplom_1418Coach.pdf</a></p>
+        </div>
     </footer>
 </body>
 

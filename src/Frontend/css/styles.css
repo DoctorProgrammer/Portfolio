@@ -50,8 +50,8 @@ h3 {
     font-size: 1.3rem;
     font-weight: 400;
     color: var(--default-font-color);
-    letter-spacing: 0.2rem;
-    margin-left: 5%;
+    letter-spacing: 0.15rem;
+    margin-left: 3%;
     width: 80%;
 }
 
@@ -95,7 +95,7 @@ nav ul:nth-child(1) {
     justify-content: flex-start;
 }
 
-nav ul:nth-child(3) {
+nav ul:nth-child(2) {
     justify-content: flex-end;
 }
 
@@ -279,3 +279,61 @@ form button:hover {
     margin-top: 1rem;
 }
 
+/*
+<footer>
+    <div>
+        <h3>Contact</h3>
+        <p>Robin Trachsel</p>
+        <p>E-Mail: <a href="mailto:ro.trachsel@vtxfree.ch">ro.trachsel@vtxfree.ch</a></p>
+        <p>Phone: <a href="tel:+41784066152">+41 78 406 61 52</a></p>
+        <h3>Address</h3>
+        <p>Im Zil 53 <br>8620 Wetzikon ZH <br>Switzerland</p>
+    </div>
+
+    <div>
+        <h3>Links</h3>
+        <p>Github: <a href="https://github.com/TrachselRobin">TrachselRobin</a></p>
+    </div>
+
+    <div>
+        <h3>Dokumente</h3>
+        <p><a href="./documents/TrachselRobin_CV.pdf" target="_blank">Circle Vitae</a></p>
+        <p><a href="./documents/TrachselRobin_Diplom_1418Coach.pdf" target="_blank">1418 Coach</a></p>
+    </div>
+</footer>
+*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 10%;
+}
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    height: 100%;
+}
+
+footer div h3 {
+    color: var(--secondary-bg-color);
+    background-color: var(--secondary-font-color);
+    padding: 0.5rem;
+}
+
+footer div p {
+    color: var(--default-font-color);
+    margin-bottom: 1rem;
+}
+
+footer div a {
+    color: var(--default-font-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer div a:hover {
+    text-decoration: underline;
+}

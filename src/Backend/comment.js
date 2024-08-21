@@ -7,15 +7,7 @@
 const express = require('express')
 const router = express.Router()
 
-const comments = [
-    {
-        id: 1,
-        reference: "Vorgesetzter",
-        author: 'Robin Trachsel',
-        initials: "RT",
-        content: 'Content 1'
-    }
-]
+const comments = []
 
 router.get('', (req, res) => {
     res.json(comments)
@@ -83,6 +75,9 @@ router.put('/:id', (req, res) => {
 
 function createId() {
     const lastComment = comments[comments.length - 1]
+    if (!lastComment) {
+        return 1
+    }
     return lastComment.id + 1
 }
 
