@@ -21,40 +21,79 @@
         <nav id="navbar">
             <ul id="links">
                 <li><a href="./">Home</a></li>
-                <li><a href="./about">About</a></li>
                 <li><a href="./document">Documents</a></li>
-                <li><a href="./contact">Contact</a></li>
+                <li><a href="mailto:ro.trachsel@vtxfree.ch">Contact</a></li>
             </ul>
+            
+            <button id="burger" onclick="toggleLinks()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <ul>
-                <button id="mode" onclick="toggleMode()">
+                <li><button id="mode" onclick="toggleMode()">
                     <img class="light" src="./images/moon.png" alt="Dark Mode">
                     <img id="sun" class="dark" src="./images/sun.png" alt="Light Mode">
-                </button>
+                </button></li>
             </ul>
         </nav>
     </header>
+
+    <div id="navList" class="show">
+        <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="./document">Documents</a></li>
+            <li><a href="mailto:ro.trachsel@vtxfree.ch">Contact</a></li>
+        </ul>
+    </div>
 
     <main>
         <section id="title">
             <div id="title-left">
                 <h2>IMS Student</h2>
                 <h1>I'm <b>Robin</b> Trachsel</h1>
-                <h3>" This is my official <u> portfolio website</u> to showcase my projects, my skills and even my CV. "</h3>
+                <h3>"This is my official <u> portfolio website</u> to showcase my projects, my skills and even my CV."
+                </h3>
             </div>
             <div id="title-right">
-                <svg id="visual" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-                    <g transform="translate(482.5224085040118 272.00739809182323)">
-                        <path
-                            d="M128.9 -177.4C163 -152.7 183.7 -109.6 195.4 -65.4C207 -21.3 209.5 23.8 219.6 95.5C229.6 167.3 247 265.7 211.7 282.3C176.3 299 88.2 233.9 13.7 215C-60.7 196.1 -121.5 223.5 -171.7 211.6C-222 199.8 -261.7 148.9 -282.1 90.6C-302.4 32.3 -303.4 -33.3 -283.3 -91.1C-263.2 -149 -222.1 -199.1 -171.4 -218.4C-120.7 -237.8 -60.3 -226.4 -6.5 -217.5C47.4 -208.6 94.8 -202.2 128.9 -177.4"
-                            fill="#8F6CC8"></path>
-                    </g>
-                </svg>
+                <img src="./images/Robin.png" alt="Myself">
             </div>
         </section>
 
         <section id="skills">
-            t
+            <div>
+                <div class="scale">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                </div>
+                <p><b>Java</b> is the first programming language I learned. Due to my Python knowledge, I am able to create quite complex programs.</p>
+            </div>
+
+            <div>
+                <div class="scale">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                </div>
+                <p><b>HTML, CSS & JS</b> are the programming languages I am most familiar with. I have been using them for over 3 years now. AND I LOVE IT!</p>
+            </div>
+
+            <div>
+                <div class="scale">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                </div>
+                <p><b>Python</b> is the programming language we use in school so i gained a solid base knowledge which led to me knowing very much about python.</p>
+            </div>
         </section>
 
         <section id="comments">
@@ -63,7 +102,8 @@
                     <input type="text" name="prename" id="prename" placeholder="Prename" required>
                     <input type="text" name="name" id="name" placeholder="Name" required>
                 </div>
-                <input type="text" name="reference" id="reference" placeholder="Reference to Robin (Teacher, friend, etc.)" required>
+                <input type="text" name="reference" id="reference"
+                    placeholder="Reference to Robin (Teacher, friend, etc.)" required>
                 <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Comment..." required></textarea>
                 <button type="submit">Post</button>
             </form>
@@ -89,7 +129,8 @@
         <div>
             <h3>Dokumente</h3>
             <p><a href="./documents/TrachselRobin_CV.pdf" target="_blank">TrachselRobin_CV.pdf</a></p>
-            <p><a href="./documents/TrachselRobin_Diplom_1418Coach.pdf" target="_blank">TrachselRobin_Diplom_1418Coach.pdf</a></p>
+            <p><a href="./documents/TrachselRobin_Diplom_1418Coach.pdf"
+                    target="_blank">TrachselRobin_Diplom_1418Coach.pdf</a></p>
         </div>
     </footer>
 </body>

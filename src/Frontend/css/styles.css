@@ -76,7 +76,7 @@ nav {
     display: flex;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
@@ -91,11 +91,11 @@ nav ul {
     width: calc(100% / 3);
 }
 
-nav ul:nth-child(1) {
+nav ul:first-child {
     justify-content: flex-start;
 }
 
-nav ul:nth-child(2) {
+nav ul:last-child {
     justify-content: flex-end;
 }
 
@@ -142,7 +142,8 @@ nav img {
 
 main section {
     min-height: 100vh;
-    padding: 3% 10%;
+    padding: 3% 10% 3% 10%;
+    background-color: var(--secondary-bg-color);
 }
 
 main section:first-child,
@@ -150,8 +151,8 @@ main section:last-child {
     background-color: var(--default-bg-color);
 }
 
-main section {
-    background-color: var(--secondary-bg-color);
+main section:nth-child(1) {
+    padding: 0% 10% 0% 10%;
 }
 
 #title {
@@ -164,13 +165,16 @@ main section {
     width: 50%;
 }
 
-#title>div>svg {
-    z-index: -1;
+#title-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background: url("../images/visual.svg") no-repeat center center;
 }
 
-footer {
-    background-color: var(--secondary-font-color);
-    height: 50vh;
+#title-right img {
+    height: 100vh;
 }
 
 #comments {
@@ -280,42 +284,20 @@ form button:hover {
     margin-top: 1rem;
 }
 
-/*
-<footer>
-    <div>
-        <h3>Contact</h3>
-        <p>Robin Trachsel</p>
-        <p>E-Mail: <a href="mailto:ro.trachsel@vtxfree.ch">ro.trachsel@vtxfree.ch</a></p>
-        <p>Phone: <a href="tel:+41784066152">+41 78 406 61 52</a></p>
-        <h3>Address</h3>
-        <p>Im Zil 53 <br>8620 Wetzikon ZH <br>Switzerland</p>
-    </div>
-
-    <div>
-        <h3>Links</h3>
-        <p>Github: <a href="https://github.com/TrachselRobin">TrachselRobin</a></p>
-    </div>
-
-    <div>
-        <h3>Dokumente</h3>
-        <p><a href="./documents/TrachselRobin_CV.pdf" target="_blank">Circle Vitae</a></p>
-        <p><a href="./documents/TrachselRobin_Diplom_1418Coach.pdf" target="_blank">1418 Coach</a></p>
-    </div>
-</footer>
-*/
-
 footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: start;
     padding: 1rem 10%;
+    background-color: var(--secondary-font-color);
+    min-height: 50vh;
 }
 
 footer div {
     display: flex;
     flex-direction: column;
     width: 33.33%;
-    height: 100%;
+    min-width: 300px;
 }
 
 footer div h3 {
@@ -337,4 +319,215 @@ footer div a {
 
 footer div a:hover {
     text-decoration: underline;
+}
+
+.circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+}
+
+.circle {
+    stroke: #4CC790;
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+}
+
+.progress {
+    animation: progress 2s ease-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+#skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#skills > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33.33%;
+    min-width: 250px;
+    max-width: 333px;
+    padding: 1rem;
+}
+
+#skills > div > p > b {
+    color: var(--secondary-font-color);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+#skills > div > p {
+    color: var(--default-font-color);
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.scale {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+#skills > div:nth-child(1) .scale {
+    background: url("../images/java.png") no-repeat center center;
+    background-size: 50% 50%;
+}
+
+#skills > div:nth-child(2) .scale {
+    background: url("../images/htmlcss.png") no-repeat center center;
+    background-size: 70% 70%;
+}
+
+#skills > div:nth-child(3) .scale {
+    background: url("../images/python.jpg") no-repeat center center;
+    background-size: 40% 40%;
+}
+
+#skills div img {
+    position: relative;
+    top: -230px;
+    width: 40%;
+}
+
+#burger {
+    display: none;
+    aspect-ratio: 1/1;
+    border: none;
+    background-color: transparent;
+}
+
+#burger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 5px;
+    background-color: var(--default-font-color);
+    transition: all 0.3s ease;
+}
+
+.show {
+    left: -50%;
+}
+
+#navList {
+    position: fixed;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: var(--secondary-bg-color);
+}
+
+#navList ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+}
+
+#navList ul li {
+    margin: 1rem 0;
+}
+
+#navList ul li a {
+    text-decoration: none;
+    color: var(--default-font-color);
+    transition: all 0.3s ease;
+    letter-spacing: 0.8px;
+    font-size: larger;
+}
+
+#navList ul li a:hover {
+    color: var(--secondary-font-color);
+    text-shadow: 0 5px 5px var(--secondary-font-color);
+}
+
+@media (max-width: 1500px) {
+    #title {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 1440px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 1284px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 1185px) {
+    #title-right {
+        background-size: 130% 130%;
+    }
+
+    #title-right img {
+        width: 70%;
+        height: unset;
+    }
+
+    footer {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 800px) {
+    #title {
+        flex-direction: column;
+        justify-content: end;
+        padding: 0 5%;
+    }
+
+    #title div {
+        width: 70%;
+    }
+}
+
+@media (max-width: 550px) {
+    #burger {
+        display: block;
+    }
+
+    #burger span {
+        width: 30px;
+        height: 3px;
+        margin: 5px;
+        background-color: var(--default-font-color);
+        transition: all 0.3s ease;
+    }
+
+    #links {
+        display: none;
+    }
+
+    #navList {
+        display: block;
+    }
 }

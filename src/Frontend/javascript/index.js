@@ -42,6 +42,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         const data = await response.json();
         loadComments(data);
     });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('progress');
+            }
+        });
+    });
+
+    document.querySelectorAll(".circle").forEach((element) => {
+        observer.observe(element);
+    });
 });
 
 function loadComments(comments) {
@@ -117,6 +129,11 @@ function toggleMode() {
     const newMode = mode === 'light' ? 'dark' : 'light';
     document.cookie = `mode=${newMode}`;
     setMode(newMode);
+}
+
+function toggleLinks() {
+    const navList = document.getElementById('navList');
+    navList.classList.toggle('show');
 }
 
 // function to fetch (get) data from url: https://127.0.0.1/comment
