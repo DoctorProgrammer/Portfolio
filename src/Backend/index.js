@@ -22,7 +22,7 @@ app.use(log)
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
-  });
+});
 
 app.use('/comment', comment)
 app.use('/document', document)

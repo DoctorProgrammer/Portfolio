@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 async function fetchDocuments() {
     try {
-        const response = await fetch('http://localhost:3000/document', {
+        const response = await fetch('https://localhost:3000/document', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -48,6 +48,6 @@ async function fetchDocuments() {
 
         return response;
     } catch (error) {
-        console.error('Error fetching comments:', error);
+        console.error('From Script: Error fetching comments:', error);
     }
 }
