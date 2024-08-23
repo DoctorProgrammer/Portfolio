@@ -9,7 +9,6 @@
 */
 
 const express = require('express')
-const cors = require('cors');
 const comment = require('./comment.js')
 const document = require('./document.js')
 
@@ -20,9 +19,10 @@ const port = 3000
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(log)
-app.use(cors({
-    origin: ['http://localhost:5500/', 'https://www.robintrachsel.ch', 'http://127.0.0.1:5500']
-}))
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 app.use('/comment', comment)
 app.use('/document', document)

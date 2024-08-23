@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             content
         };
 
-        const response = await fetch('http://localhost:3000/comment', {
+        const response = await fetch('http://robintrachsel.ch/comment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -139,7 +139,7 @@ function toggleLinks() {
 // function to fetch (get) data from url: https://127.0.0.1/comment
 async function fetchComments() {
     try {
-        const response = await fetch('http://localhost:3000/comment', {
+        const response = await fetch('http://robintrachsel.ch/comment', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
