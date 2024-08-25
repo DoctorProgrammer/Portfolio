@@ -1,4 +1,4 @@
-const url = '127.0.0.1:3000';
+const url = 'http://127.0.0.1:3000';
 
 document.addEventListener('DOMContentLoaded', async function () {
     // if there is a cookie with the name "mode", set the light mode to light or dark, depending on the value of the cookie, if not, create a cookie with the name "mode" and the value "light"
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             content
         };
 
-        const response = await fetch(`https://${url}/comment`, {
+        const response = await fetch(`${url}/comment`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -141,7 +141,7 @@ function toggleLinks() {
 // function to fetch (get) data from url: https://127.0.0.1/comment
 async function fetchComments() {
     try {
-        const response = await fetch(`https://${url}/comment`, {
+        const response = await fetch(`${url}/comment`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

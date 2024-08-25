@@ -5,10 +5,15 @@
 */
 
 const express = require('express')
+const cors = require('cors')
 const router = express.Router()
 
 const fs = require('fs')
 const path = require('path')
+
+router.use(express.json())
+router.use(express.urlencoded({ extended: true }))
+router.use(cors(corsOptions))
 
 const documentsPath = path.join(__dirname, 'documents')
 
