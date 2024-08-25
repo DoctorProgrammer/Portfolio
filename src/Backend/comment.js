@@ -1,92 +1,121 @@
-/*
-  VERSION:              Robin Trachsel
-  DATE:                 19.08.2024
-  DESCRIPTION:          File to handle the comments
-*/
+const express = require('express');
+const cors = require('cors');
+const MYSQL = require('mysql');
+const corsOptions = require('./index.js');
+const router = express.Router();
 
-const express = require('express')
-const cors = require('cors')
-const corsOptions = require('./index.js')
-const router = express.Router()
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(cors(corsOptions));
 
-router.use(express.json())
-router.use(express.urlencoded({ extended: true }))
-router.use(cors(corsOptions))
+// Connect to the database once when the application starts
 
-const comments = []
+router.get('', async (req, res) => {
+    const SQL = 'SELECT * FROM comments';
 
-router.get('', (req, res) => {
-    res.json(comments)
-})
+    try {
+        const RESULT = await sqlQuery(SQL);
+        res.send(RESULT);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
-router.post('', (req, res) => {
-    const comment = req.body
-    const id = createId()
-    const prename = comment.prename
-    const name = comment.name
-    const author = prename + ' ' + name
-    const initials = prename.charAt(0) + name.charAt(0)
-
+router.post('', async (req, res) => {
+    const comment = req.body;
+    const prename = comment.prename;
+    const name = comment.name;
+    const author = prename + ' ' + name;
+    const initials = prename.charAt(0) + name.charAt(0);
 
     const newComment = {
-        id: id,
+        id: -1,
         reference: comment.reference,
         author: author,
         initials: initials,
         content: comment.content
-    }
+    };
 
-    comments.push(newComment)
-    res.json(comments)
-})
+    const SQL = `INSERT INTO comments (reference, author, initials, content) VALUES ('${newComment.reference}', '${newComment.author}', '${newComment.initials}', '${newComment.content}')`;
 
-router.get('/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const comment = comments.find(comment => comment.id === id)
+    const RESULT = await sqlQuery(SQL);
 
-    if (comment) {
-        res.json(comment)
+    // send all comments back
+    const SELECT = 'SELECT * FROM comments';
+    const COMMENTS = await sqlQuery(SELECT);
+    res.send(COMMENTS);
+});
+
+router.get('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const SQL = `SELECT * FROM comments WHERE id = ${id}`;
+
+    const RESULT = await sqlQuery(SQL);
+
+    if (RESULT.length === 0) {
+        res.status(404).send({ error: 'Comment not found' });
     } else {
-        res.status(404).send({ error: 'Comment not found' })
+        res.send(RESULT[0]);
     }
-})
+});
 
-router.delete('/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const index = comments.findIndex(comment => comment.id === id)
+router.delete('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
 
-    if (index === -1) {
-        res.status(404).send({ error: 'Comment not found' })
+    const SQL = `DELETE FROM comments WHERE id = ${id}`;
+
+    const RESULT = await sqlQuery(SQL);
+
+    if (RESULT.affectedRows === 0) {
+        res.status(404).send({ error: 'Comment not found' });
     } else {
-        comments.splice(index, 1)
-        res.status(204).send()
+        res.status(204).send();
     }
-})
+});
 
-router.put('/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const comment = comments.find(comment => comment.id === id)
+router.put('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const comment = req.body;
 
-    if (comment) {
-        comment.content = req.body.content
-        comment.reference = req.body.reference
-        comment.author = req.body.author
-        comment.initials = req.body.initials
+    const SQL = `UPDATE comments SET content = '${comment.content}' WHERE id = ${id}`;
 
-        res.json(comment)
+    const RESULT = await sqlQuery(SQL);
+
+    if (RESULT.affectedRows === 0) {
+        res.status(404).send({ error: 'Comment not found' });
     } else {
-        res.status(404).send({ error: 'Comment not found' })
+        res.status(204).send();
     }
-})
+});
 
-function createId() {
-    const lastComment = comments[comments.length - 1]
-    if (!lastComment) {
-        return 1
-    }
-    return lastComment.id + 1
+async function sqlQuery(SQL) {
+    return new Promise((resolve, reject) => {
+        const CONNECTION = MYSQL.createConnection({
+            host: process.env.MYSQL_HOST || "localhost",
+            user: process.env.MYSQL_USER || "root",
+            password: process.env.MYSQL_PWD || "MysRob04.",
+            database: process.env.MYSQL_DATABASE || "comments"
+        });
+
+        CONNECTION.connect((err) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            CONNECTION.query(SQL, (error, results, fields) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+                CONNECTION.end();
+            });
+        });
+    });
 }
 
 module.exports = [
     router
-]
+];

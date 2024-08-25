@@ -17,7 +17,7 @@ const app = express()
 const host = '127.0.0.1'
 const port = 3000
 
-const whitelist = ['https://www.robintrachsel.ch', 'http://127.0.0.1:5500', 'https://hoppscotch.io/, https://localhost:5500']
+const whitelist = ['https://www.robintrachsel.ch', 'https://robintrachsel.ch', 'http://127.0.0.1:5500', 'http://localhost:5500', 'http://localhost:3000']
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
