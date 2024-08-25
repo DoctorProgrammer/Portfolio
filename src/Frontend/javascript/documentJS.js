@@ -9,8 +9,6 @@
     </section>
 */
 
-const url = '127.0.0.1:3000';
-
 document.addEventListener('DOMContentLoaded', async function () {
     const documents = document.getElementById('documents');
 
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 async function fetchDocuments() {
     try {
-        const response = await fetch(`https://${url}/document`, {
+        const response = await fetch(`${url}/document`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

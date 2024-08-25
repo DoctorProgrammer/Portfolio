@@ -17,26 +17,21 @@ const app = express()
 const host = '127.0.0.1'
 const port = 3000
 
-const whitelist = ['https://www.robintrachsel.ch', 'https://example2.com']
+const whitelist = ['https://www.robintrachsel.ch', 'http://127.0.0.1:5500', 'https://hoppscotch.io/, https://localhost:5500']
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true)
         } else {
-            callback(new Error('Not allowed by CORS'))
+            console.log(`Blocked request from ${origin}`)
         }
     }
 }
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(log)
 app.use(cors(corsOptions))
-app.use((req, res, next) => {
-    // no cors
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
+app.use(log)
 
 app.use('/comment', comment)
 app.use('/document', document)
@@ -54,4 +49,6 @@ function log(req, res, next) {
     next()
 }
 
-module.exports = [corsOptions]
+module.exports = [
+    corsOptions
+]

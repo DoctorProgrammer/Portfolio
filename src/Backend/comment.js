@@ -6,6 +6,7 @@
 
 const express = require('express')
 const cors = require('cors')
+const corsOptions = require('./index.js')
 const router = express.Router()
 
 router.use(express.json())
