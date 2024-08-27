@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:3000';
+const url = 'http://localhost:3000';
 
 document.addEventListener('DOMContentLoaded', async function () {
     // if there is a cookie with the name "mode", set the light mode to light or dark, depending on the value of the cookie, if not, create a cookie with the name "mode" and the value "light"
@@ -100,7 +100,7 @@ function setMode(mode) {
     const root = document.documentElement;
     root.style.setProperty('--default-font-color', mode === 'light' ? '#212121' : '#f5f5f5');
     root.style.setProperty('--default-bg-color', mode === 'light' ? '#EFF2FB' : '#212121');
-    root.style.setProperty('--secondary-bg-color', mode === 'light' ? '#FFFFFF' : '#191919');
+    root.style.setProperty('--secondary-bg-color', mode === 'light' ? '#FFFFFF' : '#2a2a2a');
     root.style.setProperty('--gradient-color-1', mode === 'light' ? '#EFF2FB' : '#191919');
 
     // make all elements with the class "dark" visible when the mode is dark and invisible when the mode is light

@@ -336,7 +336,7 @@ footer div a:hover {
 }
 
 .progress {
-    animation: progress 2s ease-out forwards;
+    animation: progress 4s ease-out forwards;
 }
 
 @keyframes progress {
@@ -393,13 +393,22 @@ footer div a:hover {
 }
 
 #skills > div:nth-child(3) .scale {
-    background: url("../images/python.jpg") no-repeat center center;
+    background: url("../images/python.png") no-repeat center center;
+    background-size: 40% 40%;
+}
+
+#skills > div:nth-child(4) .scale {
+    background: url("../images/c.png") no-repeat center center;
+    background-size: 40% 40%;
+}
+
+#skills > div:nth-child(5) .scale {
+    background: url("../images/mysql.png") no-repeat center center;
     background-size: 40% 40%;
 }
 
 #skills div img {
     position: relative;
-    top: -230px;
     width: 40%;
 }
 
