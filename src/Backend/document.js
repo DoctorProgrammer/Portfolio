@@ -18,12 +18,12 @@ router.use(cors(corsOptions))
 
 const documentsPath = path.join(__dirname, 'documents')
 
-router.get('', (req, res) => {
+router.get('', cors(corsOptions), (req, res) => {
     const files = fs.readdirSync(documentsPath)
     res.json(files)
 })
 
-router.get('/:filename', (req, res) => {
+router.get('/:filename', cors(corsOptions), (req, res) => {
     const filename = req.params.filename
     const filePath = path.join(documentsPath, filename)
 

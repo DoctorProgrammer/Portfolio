@@ -10,7 +10,7 @@ router.use(cors(corsOptions));
 
 // Connect to the database once when the application starts
 
-router.get('', async (req, res) => {
+router.get('', cors(corsOptions), async (req, res) => {
     const SQL = 'SELECT * FROM comments';
 
     try {
@@ -21,7 +21,7 @@ router.get('', async (req, res) => {
     }
 });
 
-router.post('', async (req, res) => {
+router.post('', cors(corsOptions), async (req, res) => {
     const comment = req.body;
     const prename = comment.prename;
     const name = comment.name;
@@ -46,7 +46,7 @@ router.post('', async (req, res) => {
     res.send(COMMENTS);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', cors(corsOptions), async (req, res) => {
     const id = parseInt(req.params.id);
 
     const SQL = `SELECT * FROM comments WHERE id = ${id}`;
@@ -60,7 +60,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', cors(corsOptions), async (req, res) => {
     const id = parseInt(req.params.id);
 
     const SQL = `DELETE FROM comments WHERE id = ${id}`;
@@ -74,7 +74,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', cors(corsOptions), async (req, res) => {
     const id = parseInt(req.params.id);
     const comment = req.body;
 
@@ -92,10 +92,10 @@ router.put('/:id', async (req, res) => {
 async function sqlQuery(SQL) {
     return new Promise((resolve, reject) => {
         const CONNECTION = MYSQL.createConnection({
-            host: process.env.MYSQL_HOST || "localhost",
-            user: process.env.MYSQL_USER || "root",
-            password: process.env.MYSQL_PWD || "MysRob04.",
-            database: process.env.MYSQL_DATABASE || "comments"
+            host: process.env.MYSQL_HOST, // comments.azavokeh.dbs.hostpoint.internal
+            database: process.env.MYSQL_DATABASE, // azavokeh_comments
+            user: process.env.MYSQL_USER, // azavokeh_root
+            password: process.env.MYSQL_PWD // Das Passwort, welches auf dem Server gesetzt wurde (Datenbanken> Datenbankbenutzer> Bearbeiten)
         });
 
         CONNECTION.connect((err) => {
